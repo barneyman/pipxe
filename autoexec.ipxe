@@ -1,7 +1,9 @@
 #!ipxe
 dhcp
 
-# Required for TLS cert verification
-ntp pool.ntp.org
+# # Required for TLS cert verification
+# ntp pool.ntp.org
 
-chain https://raw.githubusercontent.com/valtzu/pipxe/master/example/boot.ipxe
+# chain https://raw.githubusercontent.com/valtzu/pipxe/master/example/boot.ipxe
+
+autoboot
