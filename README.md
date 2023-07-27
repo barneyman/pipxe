@@ -39,6 +39,7 @@ This will build
 - it builds on amd64
 - it runs on amd64
 
+![working](https://github.com/barneyman/pipxe/blob/8af02b6fc309da48853ee87a2ac5dbfd79b1d2f6/20230727_151822.jpg)
 
 
 THE FOLLOWING IS UNCONFIRMED BEHAVIOUR FROM UPSTREAM
