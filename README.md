@@ -13,7 +13,7 @@ Quick start
 - `docker compose up` 
 
 This will build
-- the `./docker-ftp-pxe-http` directory -  `./tftboot.zip` is it compressed
+- the `./docker-ftp-pxe-http` directory -  `./tftboot.zip` is this directory compressed
   - this should be hosted on your machine
 - the `mini-kernel-bootstrap` for the pi - `boot.img`
   - this should be flashed onto the pi/cm4 initially
@@ -26,13 +26,13 @@ This will build
   - it works in proxy mode, so will coexist with existing DHCP server
 
 ## Process
-1. Burn the image to an the media
+1. Burn the image to the media
     * SD card for RPI
     * eMMC for CM4 - requires an IO board, a F-F dupont and `https://github.com/raspberrypi/usbboot`
 2. ensure the `docker-ftp-pxe-http` is running
 2. connect the rpi to the same LAN as above and reboot the rpi
 2. the rpi will boot, find the `tftp` server (thru entries in the dnsmasq.conf file)
-2. it should thern download and execute the `efi/boot/bootaa64.efi
+2. it should then download and execute the `efi/boot/bootaa64.efi`
 2. it will then revisit the `tftp` server and execute the `autoexec.ipxe` file
 
 ## Caveats
