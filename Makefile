@@ -90,7 +90,7 @@ tftpboot.zip : pxe
 
 	$(RM) -f $@
 	#( pushd $< ; zip -q -r ../$@ efi/*  ; popd )
-	zip -q $@ $(DOCKER_DIR)
+	zip -q -r $@ $(DOCKER_DIR)
 
 boot.img: pxe
 	truncate -s $(SDCARD_MB)M $@
