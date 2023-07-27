@@ -1,7 +1,25 @@
 #!ipxe
+
+# reference here https://ipxe.org/cmd
+
+# get dhcp address
 dhcp
+
+echo "Booting from autoexec.ipxe"
 
 # Required for TLS cert verification
 ntp pool.ntp.org
 
-chain https://raw.githubusercontent.com/valtzu/pipxe/master/example/boot.ipxe
+# you can chain to another ipxe file over http/s
+# chain https://raw.githubusercontent.com/valtzu/pipxe/master/example/boot.ipxe
+
+# here i host the initrd and image on my vpngateway - barneyman
+
+initrd http://vpngateway:8080/fog/alpine/pi/boot/initramfs-rpi4
+chain http://vpngateway:8080/fog/alpine/pi/boot/vmlinuz-rpi4 initrd=initramfs-rpi4 ip=dhcp
+
+# somehwat redundant - chain does a boot
+boot
+
+
+

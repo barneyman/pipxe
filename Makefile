@@ -26,6 +26,8 @@ IPXE_GENERAL    := $(IPXE_SRC)/config/local/rpi/general.h
 SDCARD_MB	:= 8
 export MTOOLSRC	:= mtoolsrc
 
+DOCKER_DIR	:= docker-tftp-pxe-http
+
 all : tftpboot.zip boot.img
 
 submodules :
@@ -80,8 +82,15 @@ endif
 	cp ipxe/COPYING* pxe/
 
 tftpboot.zip : pxe
+	$(RM) -r $(DOCKER_DIR)/*
+	- mkdir $(DOCKER_DIR)/
+	cp -r $</efi $(DOCKER_DIR)/efi
+	cp ./example/dnsmasq.conf $(DOCKER_DIR)
+	cp ./example/docker-compose.yml $(DOCKER_DIR)
+
 	$(RM) -f $@
-	( pushd $< ; zip -q -r ../$@ * ; popd )
+	#( pushd $< ; zip -q -r ../$@ efi/*  ; popd )
+	zip -q $@ $(DOCKER_DIR)
 
 boot.img: pxe
 	truncate -s $(SDCARD_MB)M $@
