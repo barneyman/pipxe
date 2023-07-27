@@ -15,7 +15,7 @@ Quick start
 This will build
 - the `./docker-ftp-pxe-http` directory -  `./tftboot.zip` is it compressed
   - this should be hosted on your machine
-- the `mini-kernel-bootstrap` for the pi - boot.img
+- the `mini-kernel-bootstrap` for the pi - `boot.img`
   - this should be flashed onto the pi/cm4 initially
 
 **after you've done the build above**
@@ -23,6 +23,7 @@ This will build
 - `cd ./docker-ftp-pxe-http`
 - `INTERFACE=eth0 SUBNET=192.168.1.0 NETMASK=255.255.255.0 docker compose up` 
   - setting `INTERFACE`, `SUBNET` & `NETMASK` as appropriate
+  - it works in proxy mode, so will coexist with existing DHCP server
 
 ## Process
 1. Burn the image to an the media
@@ -34,9 +35,13 @@ This will build
 2. it should thern download and execute the `efi/boot/bootaa64.efi
 2. it will then revisit the `tftp` server and execute the `autoexec.ipxe` file
 
+## Caveats
+- it builds on amd64
+- it runs on amd64
 
 
 
+THE FOLLOWING IS UNCONFIRMED BEHAVIOUR FROM UPSTREAM
 
 --------------------------
 
